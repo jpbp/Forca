@@ -14,27 +14,25 @@ public class TemaActivity extends Activity {
     private Button btnCiencias;
     private Button btnObjetos;
     private String tema;
-    private TextView t;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tema);
-        t = findViewById(R.id.textView);
+
         btnEsportes = findViewById(R.id.buttonEsportes);
         btnFilmes = findViewById(R.id.buttonFilmes);
         btnCiencias = findViewById(R.id.buttonCiencias);
         btnObjetos = findViewById(R.id.buttonObjetos);
-        Bundle extras= getIntent().getExtras();
-        if(extras != null){
-            String aux = extras.getString("dificuldade");
-            t.setText(aux);
+        final Bundle extras= getIntent().getExtras();
+        final Intent intent = new Intent(TemaActivity.this, JogoActivity.class);
 
-        }
         btnEsportes.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 tema = "esportes";
-                Intent intent = new Intent(TemaActivity.this, JogoActivity.class);
+                intent.putExtra("tema",tema);
+                intent.putExtra("dificuldade",extras.getString("dificuldade"));
                 startActivity(intent);
 
             }
@@ -43,7 +41,8 @@ public class TemaActivity extends Activity {
             @Override
             public  void onClick(View v){
                 tema = "filmes";
-                Intent intent = new Intent(TemaActivity.this, JogoActivity.class);
+                intent.putExtra("tema",tema);
+                intent.putExtra("dificuldade",extras.getString("dificuldade"));
                 startActivity(intent);
             }
         });
@@ -51,7 +50,8 @@ public class TemaActivity extends Activity {
             @Override
             public  void onClick(View v){
                 tema = "ciencias";
-                Intent intent = new Intent(TemaActivity.this, JogoActivity.class);
+                intent.putExtra("tema",tema);
+                intent.putExtra("dificuldade",extras.getString("dificuldade"));
                 startActivity(intent);
             }
         });
@@ -59,7 +59,8 @@ public class TemaActivity extends Activity {
             @Override
             public  void onClick(View v){
                 tema = "objetos";
-                Intent intent = new Intent(TemaActivity.this, JogoActivity.class);
+                intent.putExtra("tema",tema);
+                intent.putExtra("dificuldade",extras.getString("dificuldade"));
                 startActivity(intent);
             }
         });
